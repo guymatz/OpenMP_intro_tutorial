@@ -8,28 +8,28 @@ EXES=hello$(EXE) pi$(EXE) matmul$(EXE) pi_mc$(EXE) prod_cons$(EXE) \
 all: $(EXES)
 
 hello$(EXE): hello.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o hello hello.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o hello$(EXE) hello.$(OBJ) $(LIBS)
 
 pi$(EXE): pi.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o pi pi.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o pi$(EXE) pi.$(OBJ) $(LIBS)
 
 pi_mc$(EXE): pi_mc.$(OBJ) random.$(OBJ)
-	$(CLINKER) $(OPTFLAGS) -o pi_mc random.$(OBJ) pi_mc.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o pi_mc$(EXE) random.$(OBJ) pi_mc.$(OBJ) $(LIBS)
 
 matmul$(EXE): matmul.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o matmul matmul.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o matmul$(EXE) matmul.$(OBJ) $(LIBS)
 
 prod_cons$(EXE): prod_cons.$(OBJ)
-	$(CLINKER) $(OPTFLAGS) -o prod_cons prod_cons.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o prod_cons$(EXE) prod_cons.$(OBJ) $(LIBS)
 
 matmul_recur$(EXE):  matmul_recur.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o matmul_recur matmul_recur.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o matmul_recur$(EXE) matmul_recur.$(OBJ) $(LIBS)
 
 mandel$(EXE):  mandel.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o mandel mandel.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o mandel$(EXE) mandel.$(OBJ) $(LIBS)
 
 linked$(EXE):  linked.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o linked linked.$(OBJ) $(LIBS)
+	$(CLINKER) $(OPTFLAGS) -o linked$(EXE) linked.$(OBJ) $(LIBS)
 
 test: $(EXES)
 	$(PRE)hello$(EXE) 
