@@ -3,7 +3,7 @@
 # CC          = g++
 CC          = gcc-15
 CLINKER     = $(CC)
-OPTFLAGS    = -fopenmp -DAPPLE
+OPTFLAGS    = -Wall -fopenmp -DAPPLE -fsanitize=leak
 LIBS        = -lm
 PRE         = ./
 

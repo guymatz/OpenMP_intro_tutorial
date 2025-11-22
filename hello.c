@@ -1,5 +1,13 @@
 #include <stdio.h>
+#include <omp.h>
 int main ()  
 {
-  printf("Hello World \n");
+
+  # pragma omp parallel
+  {
+    size_t ID = omp_get_thread_num();
+    printf("Hello(%d) ", ID);
+    printf("World(%d)\n", ID);
+  }
+  return 0;
 }
