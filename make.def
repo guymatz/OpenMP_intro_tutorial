@@ -1,14 +1,1 @@
-# for g++ compiler on Apple OS-X
-# copy to make.def
-# CC          = g++
-CC          = gcc-15
-CLINKER     = $(CC)
-OPTFLAGS    = -Wall -fopenmp -DAPPLE -fsanitize=leak
-LIBS        = -lm
-PRE         = ./
-
-CFLAGS	  = $(OPTFLAGS)
-
-OBJ=o
-EXE=.x
-RM=rm
+linux_gnu.def
