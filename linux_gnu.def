@@ -9,5 +9,5 @@ PRE         = ./
 CFLAGS	  = $(OPTFLAGS)
 
 OBJ=o
-EXE=
+EXE=.x
 RM=rm

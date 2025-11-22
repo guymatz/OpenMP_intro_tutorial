@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         num_steps = atol(argv[1]);
     }
     else {
-        //printf("I need an input parameter\n");
+        printf("I need an input parameter\n");
         return 1;
     }
     //printf("NUM STEPS: %ld\n", num_steps);
