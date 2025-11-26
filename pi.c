@@ -22,12 +22,16 @@ int main(int argc, char *argv[])
 {
     //printf("argc: %i\n", argc);
     long num_steps;
-    if (argc == 2) {
+    int thread_count = 8;
+    if (argc >= 2) {
         num_steps = atol(argv[1]);
     }
     else {
-        printf("I need an input parameter\n");
+        printf("I need an input parameter: num_steps (int)\n");
         return 1;
+    }
+    if (argc == 3) {
+        thread_count = atoi(argv[2]);
     }
     //printf("NUM STEPS: %ld\n", num_steps);
     double x, pi, sum = 0.0;
@@ -35,18 +39,18 @@ int main(int argc, char *argv[])
 
     step = 1.0/(double) num_steps;
 
-
     start_time = omp_get_wtime();
 
-    #pragma omp parallel for num_threads(8)
+    #pragma omp parallel for num_threads(thread_count)
     for (int i=1;i<= num_steps; i++){
         x = (i-0.5)*step;
-        sum = sum + 4.0/(1.0+x*x);
+        #pragma omp atomic
+        sum += 4.0/(1.0+x*x);
         //printf("T: %i, x: %4.2f, sum: %4.2f\n", omp_get_thread_num(), x, sum);
     }
 
     //printf("sum: %4.2f\n", sum);
     pi = step * sum;
     run_time = omp_get_wtime() - start_time;
-    printf("%ld steps: pi is %1.20f in %lf seconds\n ",num_steps,pi,run_time);
-}    
+    printf("steps/threads = %ld/%i: pi is %1.20f in %lf seconds\n ",num_steps, thread_count,pi,run_time);
+}
